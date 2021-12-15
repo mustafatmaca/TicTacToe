@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
     return (
         <View style = {{backgroundColor: '#2f4f4f', flex: 1}}>
             <View style = {{width: 20, height: 75}}/>
@@ -10,11 +10,11 @@ const HomeScreen = () => {
             </View>
             <View style = {{width: 20, height: 300}}/>
             <View style = {styles.buttonView}>
-                <TouchableOpacity style={styles.buttonStyle}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Game')}>
                     <Text style={styles.text}>One Player</Text>
                 </TouchableOpacity>
                 <View style = {{width: 20, height: 20}}/>
-                <TouchableOpacity style={styles.buttonStyle}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Game')}>
                     <Text style={styles.text}>Two Player</Text>
                 </TouchableOpacity>
             </View>
