@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
-const SquareComponent = () => {
+const SquareComponent = (props) => {
     return (
-        <TouchableOpacity style={styles.square}>
-            <Ionicons name="md-close" size={65} color="#dc143c" />
+        <TouchableOpacity style={styles.square} onPress={props.onPress}>
+            {props.value}
         </TouchableOpacity>
     );
 };
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
       borderColor: 'transparent',
       margin: 10,
       borderRadius: 20,
-  
       lineHeight: 34,
       marginRight: -1,
       marginTop: -1,
