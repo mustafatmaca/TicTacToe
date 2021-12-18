@@ -2,13 +2,24 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
+const renderIcon = (value) => {
+  switch(value){
+    case 1: return <Ionicons name="close-outline" size={65} color="#dc143c"/>;
+    case -1: return <Ionicons name="ellipse-outline" size={65} color="#228b22"/>;
+    default : return <View/>
+  }
+};
+
 const SquareComponent = (props) => {
+
     return (
         <TouchableOpacity style={styles.square} onPress={props.onPress}>
-            {props.value}
+            {renderIcon(props.value)}
         </TouchableOpacity>
     );
 };
+
+
 
 const styles = StyleSheet.create({
     square: {

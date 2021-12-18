@@ -12,14 +12,14 @@ const HomeScreen = (props) => {
 
             <View style = {styles.buttonView}>
                 <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Game')}>
-                    <Ionicons name="md-person" size={25} color="#fff" />
+                    <Ionicons name="md-person" size={25} color="#1b1b1b" />
                     <Text style={styles.text}>One Player</Text>
                 </TouchableOpacity>
 
                 <View style = {{height: 20}}/>
 
                 <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Game')}>
-                    <Ionicons name="md-people" size={28} color="#fff" />
+                    <Ionicons name="md-people" size={28} color="#1b1b1b" />
                     <Text style={styles.text}>Two Player</Text>
                 </TouchableOpacity>
             </View>
@@ -53,10 +53,9 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 18,
-        color: "#fff",
+        color: "#1b1b1b",
         fontWeight: "bold",
         alignSelf: "center",
-        textTransform: "uppercase",
         paddingHorizontal: 10
       },
 });

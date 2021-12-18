@@ -5,15 +5,15 @@ import SquareComponent from "../components/SquareComponent";
 import BoardComponent from "../components/BoardComponent";
 
 const GameScreen = (props) => {
-    const [gameState, setGameState] = useState([Array(9).fill(null)]);
+    const [gameState, setGameState] = useState(Array(9).fill(null));
     const [turn, setTurn] = useState(true);
-    const components = turn ? <Ionicons name="close-outline" size={65} color="#dc143c"/> : <Ionicons name="ellipse-outline" size={65} color="#228b22"/>
+    const components = turn ? 1 : -1
 
     const onTilePress = (i) => {
         var newState = gameState;
         var value = newState[i];
 
-        newState[i] = components;
+        if (newState[i] == null) {newState[i] = components;}
         console.log(newState);
         console.log(value);
 
@@ -34,11 +34,29 @@ const GameScreen = (props) => {
             </View>
 
             <BoardComponent squares = {gameState} onPress = {onTilePress}/>
+            
+            <View style = {{alignItems: "center", paddingTop: 50}}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => {setGameState(Array(9).fill(null)); setTurn(true);}}>
+                    <Ionicons name="reload" size={50} color="#1b1b1b" />
+                </TouchableOpacity>
+            </View>
 
         </View>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    buttonStyle: {
+        elevation: 8,
+        backgroundColor: "#daa520",
+        width: 100,
+        height: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 100,
+        flexDirection: 'row'
+    },
+});
 
 export default GameScreen;
