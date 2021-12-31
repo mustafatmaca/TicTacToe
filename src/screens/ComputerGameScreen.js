@@ -5,7 +5,7 @@ import AwesomeAlert from "react-native-awesome-alerts";
 import { calculateWinner } from "../services/service";
 import BoardComponent from "../components/BoardComponent";
 
-const GameScreen = (props) => {
+const ComputerGameScreen = (props) => {
     const [gameState, setGameState] = useState(Array(9).fill(null));
     const [turn, setTurn] = useState(true);
     const components = turn ? 1 : -1;
@@ -15,15 +15,45 @@ const GameScreen = (props) => {
     const title = winner ? `Winner is ${winner} !` : 'Match tied';
 
     const onTilePress = (i) => {
-        var newState = gameState;
+        var newState = gameState;        
 
         if (newState[i] == null) {
-            newState[i] = components;
+            newState[i] = 1;
+            computerMove();
             setTurn(!turn);
         };
 
         setGameState(newState);
-        Vibration.vibrate(25);
+        Vibration.vibrate(25);        
+    };
+    
+    //random değer atıyor ama x kazandıktan sonra o nun kazanacağı duruma atarsa o kazanmış sayılıyor
+    //dolu yere basınca bozuluyordu yukarda if içinde verilirse düzeliyor
+    const computerMove = () => {
+        var newState = gameState;
+        var random = Math.floor(Math.random() * 8);
+        var control = winner;
+
+        control = calculateWinner(gameState);
+
+        console.log(control);
+
+        if (!control) {
+            while(newState[random]){
+                if (!newState.includes(null)) {
+                    break;
+                }
+                random = Math.floor(Math.random() * 8);
+            }
+    
+            if (newState[random] == null && !winner) {
+                newState[random] = -1;
+            };
+    
+            setGameState(newState);
+        }
+
+
     };
 
     return (
@@ -105,4 +135,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default GameScreen;
+export default ComputerGameScreen;

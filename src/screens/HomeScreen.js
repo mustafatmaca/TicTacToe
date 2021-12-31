@@ -10,14 +10,14 @@ const HomeScreen = (props) => {
             </View>
 
             <View style={styles.buttonView}>
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Game')}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Computer')}>
                     <Ionicons name="md-person" size={25} color="#1b1b1b" />
                     <Text style={styles.buttonText}>One Player</Text>
                 </TouchableOpacity>
 
                 <View style={{ height: 20 }} />
 
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Game')}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Player')}>
                     <Ionicons name="md-people" size={28} color="#1b1b1b" />
                     <Text style={styles.buttonText}>Two Player</Text>
                 </TouchableOpacity>
