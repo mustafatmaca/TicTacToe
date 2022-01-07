@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Vibration } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import AwesomeAlert from "react-native-awesome-alerts";
-import { calculateWinner } from "../services/service";
+import { calculateWinner } from "../helper/helper";
 import BoardComponent from "../components/BoardComponent";
 
 const ComputerGameScreen = ({ navigation }) => {
