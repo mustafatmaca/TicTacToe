@@ -10,38 +10,24 @@ const renderIcon = (value) => {
   }
 };
 
-const SquareComponent = (props) => {
+const SquareComponent = ({ value, onPress }) => {
   return (
-    <TouchableOpacity style={styles.square} onPress={props.onPress}>
-      {renderIcon(props.value)}
+    <TouchableOpacity style={styles.square} onPress={onPress}>
+      {renderIcon(value)}
     </TouchableOpacity>
   );
 };
-
-
 
 const styles = StyleSheet.create({
   square: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#1b1b1b',
-    borderWidth: 1,
-    borderColor: 'transparent',
-    margin: 10,
+    margin: 5,
     borderRadius: 20,
-    lineHeight: 34,
-    marginRight: -1,
-    marginTop: -1,
-    padding: 0,
     width: 100,
     height: 100,
-  },
-  char: {
-    flexDirection: 'row',
-    fontSize: 75,
-    fontWeight: '700',
-    color: '#228b22',
-  },
+  }
 });
 
 export default SquareComponent;

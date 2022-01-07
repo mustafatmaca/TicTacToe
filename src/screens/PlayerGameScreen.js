@@ -5,14 +5,13 @@ import AwesomeAlert from "react-native-awesome-alerts";
 import { calculateWinner } from "../services/service";
 import BoardComponent from "../components/BoardComponent";
 
-const PlayerGameScreen = (props) => {
+const PlayerGameScreen = ({ navigation }) => {
     const [gameState, setGameState] = useState(Array(9).fill(null));
     const [turn, setTurn] = useState(true);
     const components = turn ? 1 : -1;
     const winner = calculateWinner(gameState);
     const stateText = winner ? "Winner " + winner : turn ? "Player X Turn" : "Player O Turn";
     const showAlert = !!(winner || !gameState.includes(null));
-    const title = winner ? `Winner is ${winner} !` : 'Match tied';
 
     const onTilePress = (i) => {
         var newState = gameState;
@@ -22,14 +21,14 @@ const PlayerGameScreen = (props) => {
             setTurn(!turn);
         };
 
-        setGameState(newState);
+        setGameState([...newState]);
         Vibration.vibrate(25);
     };
 
     return (
         <View style={{ flex: 1, backgroundColor: '#2f4f4f' }}>
             <View style={{ flexDirection: 'row-reverse' }}>
-                <TouchableOpacity style={{ paddingTop: 15, paddingRight: 5, }} onPress={() => props.navigation.navigate('Home')}>
+                <TouchableOpacity style={{ paddingTop: 15, paddingRight: 5, }} onPress={() => navigation.navigate('Home')}>
                     <Ionicons name="md-close" size={50} color="#daa520" />
                 </TouchableOpacity>
             </View>
@@ -68,32 +67,27 @@ const PlayerGameScreen = (props) => {
 
 const styles = StyleSheet.create({
     buttonStyle: {
-        elevation: 8,
         backgroundColor: "#daa520",
         width: 100,
         height: 100,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
         borderRadius: 100,
-        flexDirection: 'row'
     },
     alert: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
-        height: '100%',
         backgroundColor: '#2f4f4f',
         flexDirection: 'column',
     },
     newGame: {
         height: 50,
+        width: 150,
         borderRadius: 23,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#daa520',
-        width: 150,
     },
     newText: {
         fontSize: 20,

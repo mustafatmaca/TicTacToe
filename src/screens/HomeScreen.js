@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
-const HomeScreen = (props) => {
+const HomeScreen = ({ navigation }) => {
     return (
         <View style={{ backgroundColor: '#2f4f4f', flex: 1 }}>
             <View style={styles.titleView}>
@@ -10,14 +10,14 @@ const HomeScreen = (props) => {
             </View>
 
             <View style={styles.buttonView}>
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Computer')}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate('Computer')}>
                     <Ionicons name="md-person" size={25} color="#1b1b1b" />
                     <Text style={styles.buttonText}>One Player</Text>
                 </TouchableOpacity>
 
                 <View style={{ height: 20 }} />
 
-                <TouchableOpacity style={styles.buttonStyle} onPress={() => props.navigation.navigate('Player')}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate('Player')}>
                     <Ionicons name="md-people" size={28} color="#1b1b1b" />
                     <Text style={styles.buttonText}>Two Player</Text>
                 </TouchableOpacity>
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
         paddingTop: 300
     },
     buttonStyle: {
-        elevation: 8,
         backgroundColor: "#daa520",
         borderRadius: 10,
         paddingVertical: 10,
